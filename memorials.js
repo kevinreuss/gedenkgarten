@@ -1,5 +1,6 @@
-const memorials = {
-  "0000000001": {
+const memorials = [
+  {
+    id: "0000000001",
     name: "Günter Reuß",
     dates: "20.01.1945 - 21.11.2023",
     portrait: "images/people/0000000001/profile-picture.png",
@@ -9,7 +10,7 @@ const memorials = {
     timeline: [],
     guestbook: [],
   },
-};
+];
 
 /*
 const memorials = {

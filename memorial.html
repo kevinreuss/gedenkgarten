@@ -668,20 +668,19 @@
       // Load memorial data
       document.addEventListener("DOMContentLoaded", function () {
         const id = getMemorialIdFromURL();
+        const memorial = memorials.find((m) => m.id === id);
 
-        if (!id || !memorials[id]) {
+        if (!id || !memorial) {
           window.location.href = "index.html";
           return;
         }
-
-        const memorial = memorials[id];
 
         // Update page title
         document.title = `${memorial.name} | Digitaler Gedenkgarten`;
 
         // Set memorial details
         document.getElementById("memorial-portrait-img").src =
-          memorial.portrait;
+          "images/people/" + memorial.id + "/profile-picture.png";
         document.getElementById("memorial-portrait-img").alt = memorial.name;
         document.getElementById("memorial-name").textContent = memorial.name;
         document.getElementById("memorial-dates").textContent = memorial.dates;

@@ -421,17 +421,16 @@
         // Load memorials
         const memorialGrid = document.getElementById("memorial-grid");
 
-        for (const id in memorials) {
-          const memorial = memorials[id];
+        for (const memorial of memorials) {
           const memorialCard = document.createElement("div");
           memorialCard.className = "memorial-card";
           memorialCard.onclick = function () {
-            window.location.href = `memorial.html?id=${id}`;
+            window.location.href = `memorial.html?id=${memorial.id}`;
           };
 
           memorialCard.innerHTML = `
             <div class="memorial-img">
-              <img src="${memorial.portrait}" alt="${memorial.name}" />
+              <img src="images/people/${memorial.id}/profile-picture.png" alt="${memorial.name}" />
             </div>
             <div class="memorial-info">
               <h3>${memorial.name}</h3>
