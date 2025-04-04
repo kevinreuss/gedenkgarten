@@ -182,6 +182,7 @@
         overflow: hidden;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s;
+        cursor: pointer;
       }
 
       .memorial-card:hover {
@@ -356,737 +357,90 @@
         color: #aaa;
       }
 
-      /* Memorial Detail Page Styles */
-      .memorial-detail {
-        display: none;
-        padding: 3rem 0;
-      }
-
-      .memorial-header {
-        display: flex;
-        align-items: flex-start;
-        gap: 2rem;
-        margin-bottom: 3rem;
-      }
-
-      .memorial-portrait {
-        width: 300px;
-        height: 300px;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        flex-shrink: 0;
-      }
-
-      .memorial-portrait img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .memorial-header-info h1 {
-        margin-bottom: 0.5rem;
-        color: var(--dark);
-      }
-
-      .memorial-dates {
-        color: #666;
-        margin-bottom: 1rem;
-      }
-
-      .memorial-bio {
-        line-height: 1.8;
-        margin-bottom: 1.5rem;
-      }
-
-      .memorial-actions {
-        display: flex;
-        gap: 1rem;
-        margin-top: 1.5rem;
-      }
-
-      .memorial-tabs {
-        display: flex;
-        border-bottom: 2px solid var(--light);
-        margin-bottom: 2rem;
-      }
-
-      .tab {
-        padding: 1rem 2rem;
-        cursor: pointer;
-        font-weight: 600;
-        color: #666;
-        transition: all 0.3s;
-      }
-
-      .tab.active {
-        color: var(--dark);
-        border-bottom: 3px solid var(--accent);
-        margin-bottom: -2px;
-      }
-
-      .tab-content {
-        display: none;
-      }
-
-      .tab-content.active {
-        display: block;
-      }
-
-      .memory-form {
-        background-color: white;
-        padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        margin-bottom: 2rem;
-      }
-
-      .form-group {
-        margin-bottom: 1.5rem;
-      }
-
-      .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 600;
-        color: var(--dark);
-      }
-
-      .form-group input,
-      .form-group textarea {
-        width: 100%;
-        padding: 0.8rem;
-        border: 2px solid var(--light);
-        border-radius: 5px;
-        font-size: 1rem;
-      }
-
-      .form-group textarea {
-        min-height: 150px;
-        resize: vertical;
-      }
-
-      .memory-list {
-        display: grid;
-        gap: 2rem;
-      }
-
-      .memory {
-        background-color: white;
-        padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      }
-
-      .memory-header {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 1rem;
-      }
-
-      .memory-author {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .memory-author img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-
-      .memory-date {
-        color: #888;
-      }
-
-      .memory-content {
-        margin-bottom: 1.5rem;
-        line-height: 1.8;
-      }
-
-      .memory-images {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 1rem;
-        margin-top: 1.5rem;
-      }
-
-      .memory-image {
-        height: 150px;
-        border-radius: 5px;
-        overflow: hidden;
-        cursor: pointer;
-      }
-
-      .memory-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s;
-      }
-
-      .memory-image:hover img {
-        transform: scale(1.05);
-      }
-
-      .photo-gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1.5rem;
-      }
-
-      .gallery-item {
-        height: 200px;
-        border-radius: 8px;
-        overflow: hidden;
-        cursor: pointer;
-        position: relative;
-      }
-
-      .gallery-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s;
-      }
-
-      .gallery-item:hover img {
-        transform: scale(1.05);
-      }
-
-      .gallery-item-info {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-        color: white;
-        padding: 1rem;
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-
-      .gallery-item:hover .gallery-item-info {
-        opacity: 1;
-      }
-
-      .timeline {
-        position: relative;
-        max-width: 800px;
-        margin: 0 auto;
-      }
-
-      .timeline::after {
-        content: "";
-        position: absolute;
-        width: 4px;
-        background-color: var(--light);
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -2px;
-      }
-
-      .timeline-item {
-        padding: 10px 40px;
-        position: relative;
-        width: 50%;
-        box-sizing: border-box;
-      }
-
-      .timeline-item::after {
-        content: "";
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background-color: white;
-        border: 4px solid var(--accent);
-        border-radius: 50%;
-        top: 15px;
-        z-index: 1;
-      }
-
-      .timeline-item:nth-child(odd) {
-        left: 0;
-      }
-
-      .timeline-item:nth-child(even) {
-        left: 50%;
-      }
-
-      .timeline-item:nth-child(odd)::after {
-        right: -12px;
-      }
-
-      .timeline-item:nth-child(even)::after {
-        left: -12px;
-      }
-
-      .timeline-content {
-        background-color: white;
-        padding: 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      }
-
-      .timeline-date {
-        color: var(--accent);
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-      }
-
-      .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
-        z-index: 1000;
-        justify-content: center;
-        align-items: center;
-        padding: 2rem;
-      }
-
-      .modal-content {
-        max-width: 90%;
-        max-height: 90%;
-      }
-
-      .modal-content img {
-        max-width: 100%;
-        max-height: 90vh;
-        display: block;
-        border-radius: 5px;
-      }
-
-      .modal-close {
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        color: white;
-        font-size: 2rem;
-        cursor: pointer;
-      }
-
-      .back-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background-color: var(--light);
-        color: var(--dark);
-        padding: 0.6rem 1.2rem;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: 600;
-        margin-bottom: 2rem;
-        transition: background-color 0.3s;
-      }
-
-      .back-btn:hover {
-        background-color: var(--secondary);
-        color: white;
-      }
-
       @media (max-width: 768px) {
         .hero h1 {
           font-size: 2.2rem;
-        }
-
-        .memorial-header {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .memorial-portrait {
-          width: 250px;
-          height: 250px;
-        }
-
-        .memorial-tabs {
-          overflow-x: auto;
-          white-space: nowrap;
-        }
-
-        .tab {
-          padding: 1rem;
-        }
-
-        .timeline::after {
-          left: 31px;
-        }
-
-        .timeline-item {
-          width: 100%;
-          padding-left: 70px;
-          padding-right: 25px;
-        }
-
-        .timeline-item:nth-child(even) {
-          left: 0;
-        }
-
-        .timeline-item:nth-child(odd)::after,
-        .timeline-item:nth-child(even)::after {
-          left: 21px;
         }
       }
     </style>
   </head>
   <body>
-    <!-- Main Page -->
-    <div id="main-page">
-      <header>
-        <div class="container">
-          <nav>
-            <div class="logo">
-              <i class="fas fa-seedling"></i>
-              <span>Digitaler Gedenkgarten</span>
-            </div>
-          </nav>
-        </div>
-      </header>
-
-      <section class="hero">
-        <div class="hero-content">
-          <h1>Bewahre die Erinnerung für immer</h1>
-          <p>
-            Ein digitaler Ort, um das Andenken an geliebte Menschen zu bewahren
-            und gemeinsam Erinnerungen zu teilen.
-          </p>
-        </div>
-      </section>
-
-      <section class="featured-section">
-        <div class="container">
-          <div class="memorial-grid">
-            <div class="memorial-card" onclick="showMemorial('0000000001')">
-              <div class="memorial-img">
-                <img
-                  src="images/people/0000000001/profile-picture.png"
-                  alt="Günter Reuß"
-                />
-              </div>
-              <div class="memorial-info">
-                <h3>Günter Reuß</h3>
-                <p>20.01.1945 - 21.11.2023</p>
-                <!-- <div class="memorial-meta">
-                  <span><i class="fas fa-heart"></i> 0 Erinnerungen</span>
-                  <span><i class="fas fa-image"></i> 0 Fotos</span>
-                </div> -->
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer>
-        <div class="container">
-          <div class="footer-content">
-            <div class="footer-column">
-              <h3>Digitaler Gedenkgarten</h3>
-              <p>
-                Ein Ort der Erinnerung und des Gedenkens für Ihre geliebten
-                Menschen.
-              </p>
-              <div class="social-links"></div>
-            </div>
-            <div class="footer-column"></div>
-            <div class="footer-column"></div>
-            <div class="footer-column"></div>
-          </div>
-          <div class="copyright">
-            <p>&copy; 2025 Digitaler Gedenkgarten. Alle Rechte vorbehalten.</p>
-          </div>
-        </div>
-      </footer>
-    </div>
-
-    <!-- Memorial Detail Page -->
-    <div id="memorial-detail" class="memorial-detail">
+    <header>
       <div class="container">
-        <a href="#" class="back-btn" onclick="hideMemorial()"
-          ><i class="fas fa-arrow-left"></i> Zurück zur Übersicht</a
-        >
+        <nav>
+          <div class="logo">
+            <i class="fas fa-seedling"></i>
+            <span>Digitaler Gedenkgarten</span>
+          </div>
+        </nav>
+      </div>
+    </header>
 
-        <div class="memorial-header">
-          <div class="memorial-portrait">
-            <img id="memorial-portrait-img" src="" alt="" />
-          </div>
-          <div class="memorial-header-info">
-            <h1 id="memorial-name"></h1>
-            <p id="memorial-dates" class="memorial-dates"></p>
-            <p id="memorial-bio" class="memorial-bio"></p>
-            <div class="memorial-actions">
-              <a href="#" class="btn"
-                ><i class="fas fa-candle-holder"></i> Kerze anzünden</a
-              >
-              <a href="#" class="btn"
-                ><i class="fas fa-flower"></i> Blumen niederlegen</a
-              >
-              <a href="#" class="btn"
-                ><i class="fas fa-share-alt"></i> Teilen</a
-              >
-            </div>
-          </div>
-        </div>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Bewahre die Erinnerung für immer</h1>
+        <p>
+          Ein digitaler Ort, um das Andenken an geliebte Menschen zu bewahren
+          und gemeinsam Erinnerungen zu teilen.
+        </p>
+      </div>
+    </section>
 
-        <div class="memorial-tabs">
-          <div class="tab active" onclick="showTab('memories')">
-            Erinnerungen
-          </div>
-          <div class="tab" onclick="showTab('photos')">Fotogalerie</div>
-          <div class="tab" onclick="showTab('timeline')">Lebenslauf</div>
-          <div class="tab" onclick="showTab('guestbook')">Gästebuch</div>
-        </div>
-
-        <div id="memories-tab" class="tab-content active">
-          <div class="memory-form">
-            <h3>Teilen Sie Ihre Erinnerung</h3>
-            <form>
-              <div class="form-group">
-                <label for="memory-title">Titel</label>
-                <input
-                  type="text"
-                  id="memory-title"
-                  placeholder="Geben Sie einen Titel ein"
-                />
-              </div>
-              <div class="form-group">
-                <label for="memory-text">Ihre Erinnerung</label>
-                <textarea
-                  id="memory-text"
-                  placeholder="Teilen Sie Ihre Erinnerung oder Geschichte..."
-                ></textarea>
-              </div>
-              <div class="form-group">
-                <label for="memory-images">Fotos hinzufügen (optional)</label>
-                <input type="file" id="memory-images" multiple />
-              </div>
-              <button type="submit" class="btn">Erinnerung teilen</button>
-            </form>
-          </div>
-
-          <div id="memory-list" class="memory-list">
-            <!-- Memories will be loaded dynamically -->
-          </div>
-        </div>
-
-        <div id="photos-tab" class="tab-content">
-          <div id="photo-gallery" class="photo-gallery">
-            <!-- Photos will be loaded dynamically -->
-          </div>
-        </div>
-
-        <div id="timeline-tab" class="tab-content">
-          <div id="timeline" class="timeline">
-            <!-- Timeline items will be loaded dynamically -->
-          </div>
-        </div>
-
-        <div id="guestbook-tab" class="tab-content">
-          <div class="memory-form">
-            <h3>Hinterlassen Sie einen Eintrag im Gästebuch</h3>
-            <form>
-              <div class="form-group">
-                <label for="guestbook-name">Ihr Name</label>
-                <input type="text" id="guestbook-name" placeholder="Ihr Name" />
-              </div>
-              <div class="form-group">
-                <label for="guestbook-message">Ihre Nachricht</label>
-                <textarea
-                  id="guestbook-message"
-                  placeholder="Hinterlassen Sie eine Nachricht..."
-                ></textarea>
-              </div>
-              <button type="submit" class="btn">Eintrag hinterlassen</button>
-            </form>
-          </div>
-
-          <div id="guestbook-entries" class="memory-list">
-            <!-- Guestbook entries will be loaded dynamically -->
-          </div>
+    <section class="featured-section">
+      <div class="container">
+        <div id="memorial-grid" class="memorial-grid">
+          <!-- Memorials will be loaded dynamically -->
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Image Modal -->
-    <div id="image-modal" class="modal">
-      <span class="modal-close" onclick="closeModal()">&times;</span>
-      <div class="modal-content">
-        <img id="modal-image" src="" />
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Digitaler Gedenkgarten</h3>
+            <p>
+              Ein Ort der Erinnerung und des Gedenkens für Ihre geliebten
+              Menschen.
+            </p>
+            <div class="social-links"></div>
+          </div>
+          <div class="footer-column"></div>
+          <div class="footer-column"></div>
+          <div class="footer-column"></div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 Digitaler Gedenkgarten. Alle Rechte vorbehalten.</p>
+        </div>
       </div>
-    </div>
+    </footer>
 
     <script src="memorials.js"></script>
-
     <script>
-      // Sample data for memorials
-
-      // Show memorial detail page
-      function showMemorial(id) {
-        const memorial = memorials[id];
-        if (!memorial) return;
-
-        // Set memorial details
-        document.getElementById("memorial-portrait-img").src =
-          memorial.portrait;
-        document.getElementById("memorial-portrait-img").alt = memorial.name;
-        document.getElementById("memorial-name").textContent = memorial.name;
-        document.getElementById("memorial-dates").textContent = memorial.dates;
-        document.getElementById("memorial-bio").textContent = memorial.bio;
-
-        // Load memories
-        const memoryList = document.getElementById("memory-list");
-        memoryList.innerHTML = "";
-        memorial.memories.forEach((memory) => {
-          const memoryEl = document.createElement("div");
-          memoryEl.className = "memory";
-
-          let imagesHtml = "";
-          if (memory.images && memory.images.length > 0) {
-            imagesHtml = '<div class="memory-images">';
-            memory.images.forEach((img) => {
-              imagesHtml += `<img src="${img}" alt="" onclick="openModal('${img}')">`;
-            });
-            imagesHtml += "</div>";
-          }
-
-          memoryEl.innerHTML = `
-                    <div class="memory-author">
-                        <img src="${memory.author.image}" alt="${memory.author.name}">
-                        <div>
-                            <h4>${memory.author.name}</h4>
-                            <p>${memory.date}</p>
-                        </div>
-                    </div>
-                    <h3>${memory.title}</h3>
-                    <p>${memory.content}</p>
-                    ${imagesHtml}
-                `;
-
-          memoryList.appendChild(memoryEl);
-        });
-
-        // Load photos
-        const photoGallery = document.getElementById("photo-gallery");
-        photoGallery.innerHTML = "";
-        memorial.photos.forEach((photo) => {
-          const photoEl = document.createElement("div");
-          photoEl.className = "gallery-item";
-          photoEl.innerHTML = `
-                    <img src="${photo.url}" alt="${photo.caption}" onclick="openModal('${photo.url}')">
-                    <p>${photo.caption}</p>
-                `;
-          photoGallery.appendChild(photoEl);
-        });
-
-        // Load timeline
-        const timeline = document.getElementById("timeline");
-        timeline.innerHTML = "";
-        memorial.timeline.forEach((item) => {
-          const timelineItem = document.createElement("div");
-          timelineItem.className = "timeline-item";
-          timelineItem.innerHTML = `
-                    <div class="timeline-content">
-                        <div class="timeline-date">${item.date}</div>
-                        <h3>${item.title}</h3>
-                        <p>${item.description}</p>
-                    </div>
-                `;
-          timeline.appendChild(timelineItem);
-        });
-
-        // Load guestbook
-        const guestbookEntries = document.getElementById("guestbook-entries");
-        guestbookEntries.innerHTML = "";
-        memorial.guestbook.forEach((entry) => {
-          const entryEl = document.createElement("div");
-          entryEl.className = "memory";
-          entryEl.innerHTML = `
-                    <div class="memory-author">
-                        <div>
-                            <h4>${entry.name}</h4>
-                            <p>${entry.date}</p>
-                        </div>
-                    </div>
-                    <p>${entry.message}</p>
-                `;
-          guestbookEntries.appendChild(entryEl);
-        });
-
-        // Show memorial detail page
-        document.getElementById("main-page").style.display = "none";
-        document.getElementById("memorial-detail").style.display = "block";
-
-        // Set active tab
-        showTab("memories");
-
-        // Scroll to top
-        window.scrollTo(0, 0);
-      }
-
-      // Hide memorial detail page
-      function hideMemorial() {
-        document.getElementById("main-page").style.display = "block";
-        document.getElementById("memorial-detail").style.display = "none";
-      }
-
-      // Show tab content
-      function showTab(tabId) {
-        // Hide all tab contents
-        const tabContents = document.querySelectorAll(".tab-content");
-        tabContents.forEach((content) => {
-          content.classList.remove("active");
-        });
-
-        // Remove active class from all tabs
-        const tabs = document.querySelectorAll(".tab");
-        tabs.forEach((tab) => {
-          tab.classList.remove("active");
-        });
-
-        // Show selected tab content
-        document.getElementById(`${tabId}-tab`).classList.add("active");
-
-        // Add active class to selected tab
-        const selectedTab = document.querySelector(
-          `.tab[onclick="showTab('${tabId}')"]`
-        );
-        if (selectedTab) {
-          selectedTab.classList.add("active");
-        }
-      }
-
-      // Open image modal
-      function openModal(imgSrc) {
-        const modal = document.getElementById("image-modal");
-        const modalImg = document.getElementById("modal-image");
-
-        modal.style.display = "flex";
-        modalImg.src = imgSrc;
-      }
-
-      // Close image modal
-      function closeModal() {
-        document.getElementById("image-modal").style.display = "none";
-      }
-
-      // Close modal when clicking outside the image
-      window.onclick = function (event) {
-        const modal = document.getElementById("image-modal");
-        if (event.target === modal) {
-          modal.style.display = "none";
-        }
-      };
-
-      // Initialize
       document.addEventListener("DOMContentLoaded", function () {
-        // Hide memorial detail page initially
-        document.getElementById("memorial-detail").style.display = "none";
+        // Load memorials
+        const memorialGrid = document.getElementById("memorial-grid");
+
+        for (const id in memorials) {
+          const memorial = memorials[id];
+          const memorialCard = document.createElement("div");
+          memorialCard.className = "memorial-card";
+          memorialCard.onclick = function () {
+            window.location.href = `memorial.html?id=${id}`;
+          };
+
+          memorialCard.innerHTML = `
+            <div class="memorial-img">
+              <img src="${memorial.portrait}" alt="${memorial.name}" />
+            </div>
+            <div class="memorial-info">
+              <h3>${memorial.name}</h3>
+              <p>${memorial.dates}</p>
+            </div>
+          `;
+
+          memorialGrid.appendChild(memorialCard);
+        }
       });
     </script>
   </body>
