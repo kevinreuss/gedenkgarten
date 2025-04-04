@@ -492,7 +492,7 @@
             <p id="memorial-dates" class="memorial-dates"></p>
             <p id="memorial-bio" class="memorial-bio"></p>
             <div class="memorial-actions">
-              <a href="#" class="btn"
+              <!-- <a href="#" class="btn"
                 ><i class="fas fa-candle-holder"></i> Kerze anzünden</a
               >
               <a href="#" class="btn"
@@ -500,7 +500,7 @@
               >
               <a href="#" class="btn"
                 ><i class="fas fa-share-alt"></i> Teilen</a
-              >
+              > -->
             </div>
           </div>
         </div>
@@ -509,15 +509,23 @@
           <div class="tab active" onclick="showTab('memories')">
             Erinnerungen
           </div>
-          <div class="tab" onclick="showTab('photos')">Fotogalerie</div>
+          <!-- <div class="tab" onclick="showTab('photos')">Fotogalerie</div>
           <div class="tab" onclick="showTab('timeline')">Lebenslauf</div>
-          <div class="tab" onclick="showTab('guestbook')">Gästebuch</div>
+          <div class="tab" onclick="showTab('guestbook')">Gästebuch</div> -->
         </div>
 
         <div id="memories-tab" class="tab-content active">
           <div class="memory-form">
-            <h3>Teilen Sie Ihre Erinnerung</h3>
+            <h3 style="margin-bottom: 1rem">Teilen Sie Ihre Erinnerung</h3>
             <form>
+              <div class="form-group">
+                <label for="memory-text">Ihre Name</label>
+                <input
+                  type="text"
+                  id="memory-author"
+                  placeholder="Geben Sie Ihren Namen ein"
+                />
+              </div>
               <div class="form-group">
                 <label for="memory-title">Titel</label>
                 <input
