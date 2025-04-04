@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digitaler Gedenkgarten | Ein Ort der Erinnerung</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #3a5a40;
+        --secondary: #588157;
+        --light: #a3b18a;
+        --lighter: #dad7cd;
+        --dark: #344e41;
+        --accent: #bc6c25;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--lighter);
+        color: #333;
+        line-height: 1.6;
+      }
+
+      header {
+        background-color: var(--primary);
+        color: white;
+        padding: 1rem 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo i {
+        margin-right: 10px;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 2rem;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--lighter);
+      }
+
+      .hero {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url("https://images.unsplash.com/photo-1501084291732-13b1ba8f0ebc");
+        background-size: cover;
+        background-position: center;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+      }
+
+      .hero-content {
+        max-width: 800px;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--accent);
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #a05a20;
+      }
+
+      .search-section {
+        background-color: white;
+        padding: 2rem 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .search-container {
+        display: flex;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .search-container input {
+        flex: 1;
+        padding: 0.8rem;
+        border: 2px solid var(--light);
+        border-radius: 5px 0 0 5px;
+        font-size: 1rem;
+      }
+
+      .search-container button {
+        background-color: var(--secondary);
+        color: white;
+        border: none;
+        padding: 0 1.5rem;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .search-container button:hover {
+        background-color: var(--primary);
+      }
+
+      .featured-section {
+        padding: 3rem 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: var(--dark);
+      }
+
+      .memorial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .memorial-card {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .memorial-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .memorial-img {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .memorial-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .memorial-card:hover .memorial-img img {
+        transform: scale(1.05);
+      }
+
+      .memorial-info {
+        padding: 1.5rem;
+      }
+
+      .memorial-info h3 {
+        margin-bottom: 0.5rem;
+        color: var(--dark);
+      }
+
+      .memorial-info p {
+        color: #666;
+        margin-bottom: 1rem;
+      }
+
+      .memorial-meta {
+        display: flex;
+        justify-content: space-between;
+        color: #888;
+        font-size: 0.9rem;
+      }
+
+      .how-it-works {
+        background-color: white;
+        padding: 4rem 0;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .step {
+        text-align: center;
+        padding: 1.5rem;
+      }
+
+      .step-icon {
+        background-color: var(--light);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 2rem;
+        color: var(--dark);
+      }
+
+      .testimonials {
+        padding: 4rem 0;
+        background-color: var(--lighter);
+      }
+
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .testimonial {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        margin-bottom: 1.5rem;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+      }
+
+      .testimonial-author img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 1rem;
+        object-fit: cover;
+      }
+
+      footer {
+        background-color: var(--dark);
+        color: white;
+        padding: 3rem 0 1rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-column h3 {
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+      }
+
+      .footer-column ul {
+        list-style: none;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-column a {
+        color: var(--lighter);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-column a:hover {
+        color: white;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-links a {
+        color: white;
+        background-color: rgba(255, 255, 255, 0.1);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s;
+      }
+
+      .social-links a:hover {
+        background-color: var(--accent);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.9rem;
+        color: #aaa;
+      }
+
+      /* Memorial Detail Page Styles */
+      .memorial-detail {
+        display: none;
+        padding: 3rem 0;
+      }
+
+      .memorial-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .memorial-portrait {
+        width: 300px;
+        height: 300px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        flex-shrink: 0;
+      }
+
+      .memorial-portrait img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .memorial-header-info h1 {
+        margin-bottom: 0.5rem;
+        color: var(--dark);
+      }
+
+      .memorial-dates {
+        color: #666;
+        margin-bottom: 1rem;
+      }
+
+      .memorial-bio {
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+
+      .memorial-actions {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .memorial-tabs {
+        display: flex;
+        border-bottom: 2px solid var(--light);
+        margin-bottom: 2rem;
+      }
+
+      .tab {
+        padding: 1rem 2rem;
+        cursor: pointer;
+        font-weight: 600;
+        color: #666;
+        transition: all 0.3s;
+      }
+
+      .tab.active {
+        color: var(--dark);
+        border-bottom: 3px solid var(--accent);
+        margin-bottom: -2px;
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      .memory-form {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        margin-bottom: 2rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--dark);
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 2px solid var(--light);
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      .form-group textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .memory-list {
+        display: grid;
+        gap: 2rem;
+      }
+
+      .memory {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .memory-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+      }
+
+      .memory-author {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .memory-author img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .memory-date {
+        color: #888;
+      }
+
+      .memory-content {
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+      }
+
+      .memory-images {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .memory-image {
+        height: 150px;
+        border-radius: 5px;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .memory-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+      }
+
+      .memory-image:hover img {
+        transform: scale(1.05);
+      }
+
+      .photo-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .gallery-item {
+        height: 200px;
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+
+      .gallery-item-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+        color: white;
+        padding: 1rem;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .gallery-item:hover .gallery-item-info {
+        opacity: 1;
+      }
+
+      .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .timeline::after {
+        content: "";
+        position: absolute;
+        width: 4px;
+        background-color: var(--light);
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -2px;
+      }
+
+      .timeline-item {
+        padding: 10px 40px;
+        position: relative;
+        width: 50%;
+        box-sizing: border-box;
+      }
+
+      .timeline-item::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        border: 4px solid var(--accent);
+        border-radius: 50%;
+        top: 15px;
+        z-index: 1;
+      }
+
+      .timeline-item:nth-child(odd) {
+        left: 0;
+      }
+
+      .timeline-item:nth-child(even) {
+        left: 50%;
+      }
+
+      .timeline-item:nth-child(odd)::after {
+        right: -12px;
+      }
+
+      .timeline-item:nth-child(even)::after {
+        left: -12px;
+      }
+
+      .timeline-content {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .timeline-date {
+        color: var(--accent);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+      }
+
+      .modal-content {
+        max-width: 90%;
+        max-height: 90%;
+      }
+
+      .modal-content img {
+        max-width: 100%;
+        max-height: 90vh;
+        display: block;
+        border-radius: 5px;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+      }
+
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background-color: var(--light);
+        color: var(--dark);
+        padding: 0.6rem 1.2rem;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        transition: background-color 0.3s;
+      }
+
+      .back-btn:hover {
+        background-color: var(--secondary);
+        color: white;
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+
+        .memorial-header {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .memorial-portrait {
+          width: 250px;
+          height: 250px;
+        }
+
+        .memorial-tabs {
+          overflow-x: auto;
+          white-space: nowrap;
+        }
+
+        .tab {
+          padding: 1rem;
+        }
+
+        .timeline::after {
+          left: 31px;
+        }
+
+        .timeline-item {
+          width: 100%;
+          padding-left: 70px;
+          padding-right: 25px;
+        }
+
+        .timeline-item:nth-child(even) {
+          left: 0;
+        }
+
+        .timeline-item:nth-child(odd)::after,
+        .timeline-item:nth-child(even)::after {
+          left: 21px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main Page -->
+    <div id="main-page">
+      <header>
+        <div class="container">
+          <nav>
+            <div class="logo">
+              <i class="fas fa-seedling"></i>
+              <span>Digitaler Gedenkgarten</span>
+            </div>
+            <ul class="nav-links">
+              <li><a href="#">Startseite</a></li>
+              <li><a href="#">Gedenkstätten</a></li>
+              <li><a href="#">Über uns</a></li>
+              <li><a href="#">Kontakt</a></li>
+              <li><a href="#" class="btn">Anmelden</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Bewahre die Erinnerung für immer</h1>
+          <p>
+            Ein digitaler Ort, um das Andenken an geliebte Menschen zu bewahren
+            und gemeinsam Erinnerungen zu teilen.
+          </p>
+          <a href="#" class="btn">Gedenkstätte erstellen</a>
+        </div>
+      </section>
+
+      <section class="search-section">
+        <div class="container">
+          <div class="search-container">
+            <input type="text" placeholder="Nach Namen oder Orten suchen..." />
+            <button><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="featured-section">
+        <div class="container">
+          <h2 class="section-title">Besondere Gedenkstätten</h2>
+          <div class="memorial-grid">
+            <div class="memorial-card" onclick="showMemorial('maria-schmidt')">
+              <div class="memorial-img">
+                <img
+                  src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91"
+                  alt="Maria Schmidt"
+                />
+              </div>
+              <div class="memorial-info">
+                <h3>Maria Schmidt</h3>
+                <p>1945 - 2021</p>
+                <div class="memorial-meta">
+                  <span><i class="fas fa-heart"></i> 124 Erinnerungen</span>
+                  <span><i class="fas fa-image"></i> 47 Fotos</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="memorial-card" onclick="showMemorial('thomas-mueller')">
+              <div class="memorial-img">
+                <img
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
+                  alt="Thomas Müller"
+                />
+              </div>
+              <div class="memorial-info">
+                <h3>Thomas Müller</h3>
+                <p>1972 - 2020</p>
+                <div class="memorial-meta">
+                  <span><i class="fas fa-heart"></i> 87 Erinnerungen</span>
+                  <span><i class="fas fa-image"></i> 32 Fotos</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="memorial-card" onclick="showMemorial('anna-weber')">
+              <div class="memorial-img">
+                <img
+                  src="https://images.unsplash.com/photo-1544005313-94ddf0286df2"
+                  alt="Anna Weber"
+                />
+              </div>
+              <div class="memorial-info">
+                <h3>Anna Weber</h3>
+                <p>1938 - 2022</p>
+                <div class="memorial-meta">
+                  <span><i class="fas fa-heart"></i> 156 Erinnerungen</span>
+                  <span><i class="fas fa-image"></i> 63 Fotos</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="memorial-card" onclick="showMemorial('klaus-becker')">
+              <div class="memorial-img">
+                <img
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e"
+                  alt="Klaus Becker"
+                />
+              </div>
+              <div class="memorial-info">
+                <h3>Klaus Becker</h3>
+                <p>1950 - 2019</p>
+                <div class="memorial-meta">
+                  <span><i class="fas fa-heart"></i> 92 Erinnerungen</span>
+                  <span><i class="fas fa-image"></i> 28 Fotos</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="memorial-card" onclick="showMemorial('sophie-wagner')">
+              <div class="memorial-img">
+                <img
+                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80"
+                  alt="Sophie Wagner"
+                />
+              </div>
+              <div class="memorial-info">
+                <h3>Sophie Wagner</h3>
+                <p>1965 - 2021</p>
+                <div class="memorial-meta">
+                  <span><i class="fas fa-heart"></i> 78 Erinnerungen</span>
+                  <span><i class="fas fa-image"></i> 41 Fotos</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="memorial-card" onclick="showMemorial('peter-hoffmann')">
+              <div class="memorial-img">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
+                  alt="Peter Hoffmann"
+                />
+              </div>
+              <div class="memorial-info">
+                <h3>Peter Hoffmann</h3>
+                <p>1940 - 2018</p>
+                <div class="memorial-meta">
+                  <span><i class="fas fa-heart"></i> 112 Erinnerungen</span>
+                  <span><i class="fas fa-image"></i> 53 Fotos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="how-it-works">
+        <div class="container">
+          <h2 class="section-title">So funktioniert es</h2>
+          <div class="steps">
+            <div class="step">
+              <div class="step-icon">
+                <i class="fas fa-user-plus"></i>
+              </div>
+              <h3>Gedenkstätte erstellen</h3>
+              <p>
+                Erstellen Sie eine persönliche Gedenkseite für Ihre geliebten
+                Menschen mit Fotos und Lebensdaten.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-icon">
+                <i class="fas fa-share-alt"></i>
+              </div>
+              <h3>Mit anderen teilen</h3>
+              <p>
+                Laden Sie Familie und Freunde ein, Erinnerungen und Fotos
+                beizutragen.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-icon">
+                <i class="fas fa-heart"></i>
+              </div>
+              <h3>Gemeinsam erinnern</h3>
+              <p>
+                Bewahren Sie Erinnerungen für kommende Generationen und halten
+                Sie das Andenken lebendig.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonials">
+        <div class="container">
+          <h2 class="section-title">Was unsere Nutzer sagen</h2>
+          <div class="testimonial-grid">
+            <div class="testimonial">
+              <p class="testimonial-text">
+                "Der Digitale Gedenkgarten hat mir geholfen, die Erinnerung an
+                meine Mutter auf eine wunderschöne Weise zu bewahren. Es ist
+                tröstlich zu sehen, wie viele Menschen ihre Geschichten teilen."
+              </p>
+              <div class="testimonial-author">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
+                  alt="Julia K."
+                />
+                <div>
+                  <h4>Julia K.</h4>
+                  <p>München</p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial">
+              <p class="testimonial-text">
+                "Ich kann jederzeit die Gedenkstätte meines Vaters besuchen,
+                egal wo ich bin. Es ist ein wunderbarer Ort, um Erinnerungen zu
+                sammeln und zu teilen."
+              </p>
+              <div class="testimonial-author">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
+                  alt="Markus S."
+                />
+                <div>
+                  <h4>Markus S.</h4>
+                  <p>Hamburg</p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial">
+              <p class="testimonial-text">
+                "Die Zeitleiste mit den wichtigsten Lebensereignissen meiner
+                Großmutter ist so wertvoll für unsere Familie. Jetzt können auch
+                die jüngeren Generationen ihre Geschichte kennenlernen."
+              </p>
+              <div class="testimonial-author">
+                <img
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2"
+                  alt="Sarah M."
+                />
+                <div>
+                  <h4>Sarah M.</h4>
+                  <p>Berlin</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-column">
+              <h3>Digitaler Gedenkgarten</h3>
+              <p>
+                Ein Ort der Erinnerung und des Gedenkens für Ihre geliebten
+                Menschen.
+              </p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="footer-column">
+              <h3>Links</h3>
+              <ul>
+                <li><a href="#">Startseite</a></li>
+                <li><a href="#">Gedenkstätten</a></li>
+                <li><a href="#">Über uns</a></li>
+                <li><a href="#">Kontakt</a></li>
+                <li><a href="#">Blog</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Hilfe</h3>
+              <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Nutzungsbedingungen</a></li>
+                <li><a href="#">Datenschutz</a></li>
+                <li><a href="#">Support</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Kontakt</h3>
+              <ul>
+                <li>
+                  <i class="fas fa-map-marker-alt"></i> Musterstraße 123, 10115
+                  Berlin
+                </li>
+                <li><i class="fas fa-phone"></i> +49 30 1234567</li>
+                <li><i class="fas fa-envelope"></i> info@gedenkgarten.de</li>
+              </ul>
+            </div>
+          </div>
+          <div class="copyright">
+            <p>&copy; 2023 Digitaler Gedenkgarten. Alle Rechte vorbehalten.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Memorial Detail Page -->
+    <div id="memorial-detail" class="memorial-detail">
+      <div class="container">
+        <a href="#" class="back-btn" onclick="hideMemorial()"
+          ><i class="fas fa-arrow-left"></i> Zurück zur Übersicht</a
+        >
+
+        <div class="memorial-header">
+          <div class="memorial-portrait">
+            <img id="memorial-portrait-img" src="" alt="" />
+          </div>
+          <div class="memorial-header-info">
+            <h1 id="memorial-name"></h1>
+            <p id="memorial-dates" class="memorial-dates"></p>
+            <p id="memorial-bio" class="memorial-bio"></p>
+            <div class="memorial-actions">
+              <a href="#" class="btn"
+                ><i class="fas fa-candle-holder"></i> Kerze anzünden</a
+              >
+              <a href="#" class="btn"
+                ><i class="fas fa-flower"></i> Blumen niederlegen</a
+              >
+              <a href="#" class="btn"
+                ><i class="fas fa-share-alt"></i> Teilen</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="memorial-tabs">
+          <div class="tab active" onclick="showTab('memories')">
+            Erinnerungen
+          </div>
+          <div class="tab" onclick="showTab('photos')">Fotogalerie</div>
+          <div class="tab" onclick="showTab('timeline')">Lebenslauf</div>
+          <div class="tab" onclick="showTab('guestbook')">Gästebuch</div>
+        </div>
+
+        <div id="memories-tab" class="tab-content active">
+          <div class="memory-form">
+            <h3>Teilen Sie Ihre Erinnerung</h3>
+            <form>
+              <div class="form-group">
+                <label for="memory-title">Titel</label>
+                <input
+                  type="text"
+                  id="memory-title"
+                  placeholder="Geben Sie einen Titel ein"
+                />
+              </div>
+              <div class="form-group">
+                <label for="memory-text">Ihre Erinnerung</label>
+                <textarea
+                  id="memory-text"
+                  placeholder="Teilen Sie Ihre Erinnerung oder Geschichte..."
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="memory-images">Fotos hinzufügen (optional)</label>
+                <input type="file" id="memory-images" multiple />
+              </div>
+              <button type="submit" class="btn">Erinnerung teilen</button>
+            </form>
+          </div>
+
+          <div id="memory-list" class="memory-list">
+            <!-- Memories will be loaded dynamically -->
+          </div>
+        </div>
+
+        <div id="photos-tab" class="tab-content">
+          <div id="photo-gallery" class="photo-gallery">
+            <!-- Photos will be loaded dynamically -->
+          </div>
+        </div>
+
+        <div id="timeline-tab" class="tab-content">
+          <div id="timeline" class="timeline">
+            <!-- Timeline items will be loaded dynamically -->
+          </div>
+        </div>
+
+        <div id="guestbook-tab" class="tab-content">
+          <div class="memory-form">
+            <h3>Hinterlassen Sie einen Eintrag im Gästebuch</h3>
+            <form>
+              <div class="form-group">
+                <label for="guestbook-name">Ihr Name</label>
+                <input type="text" id="guestbook-name" placeholder="Ihr Name" />
+              </div>
+              <div class="form-group">
+                <label for="guestbook-message">Ihre Nachricht</label>
+                <textarea
+                  id="guestbook-message"
+                  placeholder="Hinterlassen Sie eine Nachricht..."
+                ></textarea>
+              </div>
+              <button type="submit" class="btn">Eintrag hinterlassen</button>
+            </form>
+          </div>
+
+          <div id="guestbook-entries" class="memory-list">
+            <!-- Guestbook entries will be loaded dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="image-modal" class="modal">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <div class="modal-content">
+        <img id="modal-image" src="" />
+      </div>
+    </div>
+
+    <script>
+      // Sample data for memorials
+      const memorials = {
+        "maria-schmidt": {
+          name: "Maria Schmidt",
+          dates: "1945 - 2021",
+          portrait:
+            "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91",
+          bio: "Maria Schmidt war eine liebevolle Mutter, Großmutter und Freundin. Sie wurde in Dresden geboren und verbrachte ihr Leben als engagierte Lehrerin, die Generationen von Schülern inspirierte. Ihre Leidenschaft für Musik, Literatur und Reisen prägte ihr Leben. Sie hinterlässt drei Kinder und fünf Enkelkinder, die sie über alles liebte.",
+          memories: [
+            {
+              author: {
+                name: "Lisa Schmidt",
+                image:
+                  "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb",
+              },
+              date: "15. Juni 2022",
+              title: "Meine liebste Erinnerung",
+              content:
+                "Ich erinnere mich an die Sonntagnachmittage, an denen Mama für uns alle Kuchen gebacken hat. Der Duft von frischem Apfelkuchen erfüllte das ganze Haus. Wir saßen zusammen am Tisch, erzählten Geschichten und lachten. Diese Momente werde ich für immer in meinem Herzen bewahren.",
+              images: [
+                "https://images.unsplash.com/photo-1464349095431-e9a21285b5c3",
+                "https://images.unsplash.com/photo-1484723091739-30a097e8f929",
+              ],
+            },
+            {
+              author: {
+                name: "Michael Weber",
+                image:
+                  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+              },
+              date: "3. Mai 2022",
+              title: "Eine inspirierende Lehrerin",
+              content:
+                "Frau Schmidt war meine Deutschlehrerin in der 7. Klasse. Sie hat in mir die Liebe zur Literatur geweckt und mich ermutigt, meinen eigenen Weg zu gehen. Ihr Einfluss auf mein Leben war enorm, und ich bin ihr für immer dankbar. Sie hatte eine besondere Gabe, das Beste in jedem Schüler zu sehen und zu fördern.",
+              images: [],
+            },
+            {
+              author: {
+                name: "Anna Müller",
+                image:
+                  "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
+              },
+              date: "12. April 2022",
+              title: "Unsere Reise nach Italien",
+              content:
+                "Maria und ich waren seit der Schulzeit befreundet. Vor 10 Jahren haben wir zusammen eine Reise durch die Toskana gemacht. Es war eine wundervolle Zeit voller Lachen, gutem Essen und unvergesslichen Momenten. Maria hatte immer einen guten Sinn für Humor und konnte selbst in schwierigen Situationen noch lachen. Diese Reise wird für immer in meiner Erinnerung bleiben.",
+              images: [
+                "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9",
+                "https://images.unsplash.com/photo-1533105079780-92b9be482077",
+                "https://images.unsplash.com/photo-1534445867742-43195f401b6c",
+              ],
+            },
+          ],
+          photos: [
+            {
+              url: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91",
+              caption: "Maria, 2018",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1515077678510-ce3bdf418862",
+              caption: "Familienfeier, 2015",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
+              caption: "Urlaub in Italien, 2012",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1464349095431-e9a21285b5c3",
+              caption: "Beim Backen mit den Enkelkindern, 2019",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9",
+              caption: "Reise nach Florenz, 2010",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1534445867742-43195f401b6c",
+              caption: "Weinprobe in der Toskana, 2010",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1484723091739-30a097e8f929",
+              caption: "Weihnachten 2020",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1469594292607-7bd90f8d3ba4",
+              caption: "Im Garten, Sommer 2017",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d",
+              caption: "Marias 70. Geburtstag, 2015",
+            },
+          ],
+          timeline: [
+            {
+              date: "15. März 1945",
+              title: "Geboren in Dresden",
+              description:
+                "Maria wurde als Tochter von Heinrich und Elisabeth Schmidt in Dresden geboren.",
+            },
+            {
+              date: "1963",
+              title: "Abitur",
+              description: "Abschluss des Gymnasiums mit Auszeichnung.",
+            },
+            {
+              date: "1963 - 1968",
+              title: "Studium",
+              description:
+                "Studium der Germanistik und Geschichte an der Universität Leipzig.",
+            },
+            {
+              date: "1968",
+              title: "Heirat mit Thomas Schmidt",
+              description:
+                "Hochzeit mit ihrer großen Liebe Thomas in der Frauenkirche Dresden.",
+            },
+            {
+              date: "1970",
+              title: "Geburt der Tochter Lisa",
+              description: "Ihre erste Tochter Lisa wurde geboren.",
+            },
+            {
+              date: "1972",
+              title: "Geburt des Sohnes Markus",
+              description: "Ihr Sohn Markus kam zur Welt.",
+            },
+            {
+              date: "1975",
+              title: "Geburt der Tochter Julia",
+              description: "Ihre jüngste Tochter Julia wurde geboren.",
+            },
+            {
+              date: "1969 - 2005",
+              title: "Lehrerin am Goethe-Gymnasium",
+              description:
+                "Maria unterrichtete Deutsch und Geschichte am Goethe-Gymnasium in Dresden und prägte das Leben vieler Schüler.",
+            },
+            {
+              date: "2005",
+              title: "Pensionierung",
+              description:
+                "Nach 36 Jahren im Schuldienst ging Maria in den wohlverdienten Ruhestand.",
+            },
+            {
+              date: "2010",
+              title: "Reise durch Italien",
+              description:
+                "Erfüllung eines Lebenstraums: Eine ausgedehnte Reise durch die Toskana mit ihrer besten Freundin Anna.",
+            },
+            {
+              date: "2015",
+              title: "70. Geburtstag",
+              description:
+                "Große Feier zum 70. Geburtstag mit Familie und Freunden.",
+            },
+            {
+              date: "12. November 2021",
+              title: "Friedlich eingeschlafen",
+              description:
+                "Maria verstarb friedlich im Kreise ihrer Familie nach kurzer Krankheit.",
+            },
+          ],
+          guestbook: [
+            {
+              name: "Familie Schneider",
+              date: "20. November 2021",
+              message:
+                "Unsere tiefste Anteilnahme. Maria war ein wundervoller Mensch, der uns allen fehlen wird.",
+            },
+            {
+              name: "Ehemalige Schüler der Klasse 12b (1998)",
+              date: "15. November 2021",
+              message:
+                "Frau Schmidt war die beste Lehrerin, die wir je hatten. Ihr Enthusiasmus und ihre Leidenschaft für Literatur haben uns alle inspiriert. Wir werden sie nie vergessen.",
+            },
+            {
+              name: "Petra und Hans Wagner",
+              date: "14. November 2021",
+              message:
+                "Maria war eine wunderbare Nachbarin und Freundin. Wir werden die gemeinsamen Gartenabende vermissen. Ruhe in Frieden.",
+            },
+          ],
+        },
+        "thomas-mueller": {
+          name: "Thomas Müller",
+          dates: "1972 - 2020",
+          portrait:
+            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+          bio: "Thomas Müller war ein leidenschaftlicher Fotograf, liebevoller Vater und Ehemann. Geboren in München, bereiste er die Welt, um die Schönheit der Natur einzufangen. Seine Arbeiten wurden international ausgestellt und in zahlreichen Magazinen veröffentlicht. Er hinterlässt seine Frau Claudia und zwei Kinder, Sophie und Max.",
+          memories: [
+            {
+              author: {
+                name: "Claudia Müller",
+                image:
+                  "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
+              },
+              date: "10. April 2021",
+              title: "Unser letzter gemeinsamer Urlaub",
+              content:
+                "Im Sommer 2019 haben wir als Familie unseren letzten gemeinsamen Urlaub in Norwegen verbracht. Thomas war in seinem Element, umgeben von der atemberaubenden Landschaft. Er stand jeden Morgen vor Sonnenaufgang auf, um das perfekte Licht für seine Fotos zu fangen. Die Bilder, die er dort gemacht hat, sind ein wertvolles Vermächtnis für uns.",
+              images: [
+                "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
+                "https://images.unsplash.com/photo-1519681393784-d120267933ba",
+                "https://images.unsplash.com/photo-1505322022379-7c3353ee6291",
+              ],
+            },
+            {
+              author: {
+                name: "Max Müller",
+                image:
+                  "https://images.unsplash.com/photo-1618641986557-1ecd230959aa",
+              },
+              date: "27. Februar 2021",
+              title: "Was mein Vater mir beigebracht hat",
+              content:
+                "Mein Vater hat mir nicht nur beigebracht, wie man fotografiert, sondern auch, wie man die Welt sieht. Er zeigte mir, wie man die Schönheit in den kleinen Dingen findet und wie wichtig es ist, im Moment zu leben. Jedes Mal, wenn ich durch den Sucher meiner Kamera schaue, fühle ich mich ihm nahe. Sein Erbe lebt durch meine eigene Fotografie weiter.",
+              images: [
+                "https://images.unsplash.com/photo-1516035069371-29a1b244cc32",
+              ],
+            },
+          ],
+          photos: [
+            {
+              url: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+              caption: "Thomas, 2019",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
+              caption: "Von Thomas fotografiert: Norwegische Fjorde, 2019",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1519681393784-d120267933ba",
+              caption: "Von Thomas fotografiert: Nordlichter, Norwegen 2019",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1505322022379-7c3353ee6291",
+              caption:
+                "Von Thomas fotografiert: Sonnenaufgang in Norwegen, 2019",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32",
+              caption: "Thomas mit seinem Sohn Max, 2018",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1502082553048-f009c37129b9",
+              caption: "Von Thomas fotografiert: Wald im Morgenlicht, 2017",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1",
+              caption: "Von Thomas fotografiert: Herbstlandschaft, 2016",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e",
+              caption: "Thomas bei einer Ausstellung seiner Werke, 2018",
+            },
+          ],
+          timeline: [
+            {
+              date: "5. Juni 1972",
+              title: "Geboren in München",
+              description:
+                "Thomas wurde als Sohn von Herbert und Ingrid Müller in München geboren.",
+            },
+            {
+              date: "1991",
+              title: "Abitur",
+              description: "Abschluss am Maximilian-Gymnasium München.",
+            },
+            {
+              date: "1991 - 1996",
+              title: "Studium der Fotografie",
+              description:
+                "Studium an der Hochschule für Grafik und Buchkunst in Leipzig.",
+            },
+            {
+              date: "1997",
+              title: "Erste Ausstellung",
+              description:
+                'Erste Solo-Ausstellung "Naturperspektiven" in der Galerie Lichtblick, München.',
+            },
+            {
+              date: "1999",
+              title: "Heirat mit Claudia",
+              description:
+                "Hochzeit mit Claudia Weber in einer kleinen Zeremonie am Starnberger See.",
+            },
+            {
+              date: "2001",
+              title: "Geburt der Tochter Sophie",
+              description: "Seine Tochter Sophie kam zur Welt.",
+            },
+            {
+              date: "2003",
+              title: "Geburt des Sohnes Max",
+              description: "Sein Sohn Max wurde geboren.",
+            },
+            {
+              date: "2005",
+              title: "Internationaler Durchbruch",
+              description:
+                'Veröffentlichung des Bildbandes "Wilde Erde", der in 15 Sprachen übersetzt wurde.',
+            },
+            {
+              date: "2010",
+              title: "National Geographic",
+              description:
+                "Beginn der Zusammenarbeit mit National Geographic als freier Fotograf.",
+            },
+            {
+              date: "2015",
+              title: "Auszeichnung",
+              description:
+                'Erhielt den renommierten "Nature Photographer of the Year" Award.',
+            },
+            {
+              date: "2019",
+              title: "Letzte große Reise",
+              description:
+                "Familienreise nach Norwegen, wo einige seiner letzten und beeindruckendsten Fotografien entstanden.",
+            },
+            {
+              date: "23. Oktober 2020",
+              title: "Verstorben",
+              description:
+                "Thomas verstarb unerwartet an den Folgen eines Herzinfarkts während einer Fotowanderung in den Alpen.",
+            },
+          ],
+          guestbook: [
+            {
+              name: "Redaktion National Geographic Deutschland",
+              date: "26. Oktober 2020",
+              message:
+                "Mit Thomas verlieren wir nicht nur einen herausragenden Fotografen, sondern auch einen wunderbaren Menschen, der die Schönheit unserer Erde wie kein anderer einfangen konnte. Sein Vermächtnis wird in seinen Bildern weiterleben.",
+            },
+            {
+              name: "Fotografenverband München",
+              date: "25. Oktober 2020",
+              message:
+                "Thomas war ein Vorbild für viele junge Fotografen. Seine Leidenschaft und sein Auge für Details waren einzigartig. Wir werden ihn sehr vermissen.",
+            },
+            {
+              name: "Familie Huber",
+              date: "24. Oktober 2020",
+              message:
+                "Unsere Gedanken sind bei Claudia, Sophie und Max. Thomas war ein wundervoller Nachbar und Freund. Seine Freundlichkeit und sein Humor werden uns fehlen.",
+            },
+          ],
+        },
+        "anna-weber": {
+          name: "Anna Weber",
+          dates: "1938 - 2022",
+          portrait: "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
+          bio: "Anna Weber war eine Pionierin der Frauenrechte, liebevolle Mutter und Großmutter. Geboren in Hamburg, setzte sie sich ihr Leben lang für soziale Gerechtigkeit ein. Als Rechtsanwältin vertrat sie viele Frauen in wegweisenden Fällen. In ihrer Freizeit liebte sie das Gärtnern und klassische Musik. Sie hinterlässt zwei Töchter, einen Sohn und sechs Enkelkinder.",
+          memories: [
+            {
+              author: {
+                name: "Johanna Weber",
+                image:
+                  "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb",
+              },
+              date: "20. März 2022",
+              title: "Meine Mutter, mein Vorbild",
+              content:
+                "Meine Mutter hat mir beigebracht, dass eine Frau alles erreichen kann, wenn sie an sich glaubt. Sie hat nie aufgegeben, auch wenn die Zeiten schwierig waren. Als alleinerziehende Mutter hat sie drei Kinder großgezogen und gleichzeitig eine erfolgreiche Karriere aufgebaut. Ihr Mut und ihre Entschlossenheit werden mich immer inspirieren.",
+              images: [
+                "https://images.unsplash.com/photo-1516834474-48c0abc2a902",
+              ],
+            },
+            {
+              author: {
+                name: "Martina Schulz",
+                image:
+                  "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c",
+              },
+              date: "15. März 2022",
+              title: "Eine Mentorin und Freundin",
+              content:
+                "Anna war meine Mentorin, als ich als junge Anwältin anfing. Sie nahm sich immer Zeit, um mir zu helfen und mich zu ermutigen. Ihr Engagement für Gerechtigkeit und ihre Fähigkeit, komplexe rechtliche Probleme mit Mitgefühl und Klarheit anzugehen, haben meine eigene Karriere geprägt. Ich bin dankbar für alles, was sie mir beigebracht hat.",
+              images: [],
+            },
+          ],
+          photos: [
+            {
+              url: "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
+              caption: "Anna, 2018",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1516834474-48c0abc2a902",
+              caption: "Anna mit ihrer Tochter Johanna, 1980",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1556911220-bda9f7f7597e",
+              caption: "In ihrem geliebten Garten, 2015",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1551772610-7cf0396fe8b3",
+              caption: "Bei einer Konferenz für Frauenrechte, 1995",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1581579438747-104c53d7fbc4",
+              caption: "Anna beim Klavierspielen, 2010",
+            },
+            {
+              url: "https://images.unsplash.com/photo-1511895426328-dc8714191300",
+              caption: "Mit ihren Enkelkindern, Weihnachten 2019",
+            },
+          ],
+          timeline: [
+            {
+              date: "12. August 1938",
+              title: "Geboren in Hamburg",
+              description:
+                "Anna wurde als Tochter von Wilhelm und Margarete Weber in Hamburg geboren.",
+            },
+            {
+              date: "1957",
+              title: "Abitur",
+              description:
+                "Als eine der wenigen Frauen ihres Jahrgangs machte sie ihr Abitur mit Auszeichnung.",
+            },
+            {
+              date: "1957 - 1962",
+              title: "Jurastudium",
+              description:
+                "Studium der Rechtswissenschaften an der Universität Hamburg.",
+            },
+            {
+              date: "1962",
+              title: "Heirat mit Karl Schmidt",
+              description: "Hochzeit mit dem Arzt Karl Schmidt.",
+            },
+            {
+              date: "1963",
+              title: "Geburt der Tochter Johanna",
+              description: "Ihre erste Tochter Johanna wurde geboren.",
+            },
+            {
+              date: "1965",
+              title: "Geburt des Sohnes Martin",
+              description: "Ihr Sohn Martin kam zur Welt.",
+            },
+            {
+              date: "1968",
+              title: "Geburt der Tochter Elisabeth",
+              description: "Ihre jüngste Tochter Elisabeth wurde geboren.",
+            },
+            {
+              date: "1970",
+              title: "Scheidung und Neuanfang",
+              description:
+                "Nach der Scheidung von Karl begann Anna, als alleinerziehende Mutter ihre Karriere als Anwältin aufzubauen.",
+            },
+            {
+              date: "1975",
+              title: "Gründung der eigenen Kanzlei",
+              description:
+                "Anna gründete ihre eigene Kanzlei mit Schwerpunkt auf Familienrecht und Frauenrechte.",
+            },
+            {
+              date: "1980 - 1995",
+              title: "Wegweisende Rechtsfälle",
+              description:
+                "Anna vertrat zahlreiche Frauen in wegweisenden Rechtsfällen, die zur Verbesserung der Rechte von Frauen in Deutschland beitrugen.",
+            },
+            {
+              date: "1990",
+              title: "Auszeichnung",
+              description:
+                "Erhielt den Bundesverdienstorden für ihren Einsatz für Frauenrechte.",
+            },
+            {
+              date: "2005",
+              title: "Ruhestand",
+              description:
+                "Anna zog sich aus dem aktiven Berufsleben zurück, blieb aber als Mentorin und Beraterin tätig.",
+            },
+            {
+              date: "2010 - 2020",
+              title: "Ehrenamtliches Engagement",
+              description:
+                "Engagierte sich ehrenamtlich in verschiedenen Organisationen für Frauenrechte und soziale Gerechtigkeit.",
+            },
+            {
+              date: "5. Februar 2022",
+              title: "Friedlich eingeschlafen",
+              description:
+                "Anna verstarb friedlich im Kreise ihrer Familie in ihrem Haus in Hamburg.",
+            },
+          ],
+          guestbook: [
+            {
+              name: "Deutscher Juristinnenbund",
+              date: "8. Februar 2022",
+              message:
+                "Anna Weber war eine Pionierin und Vorbild für Generationen von Juristinnen. Ihr Engagement für die Gleichstellung und Rechte von Frauen hat bleibende Spuren hinterlassen. Wir werden ihr Andenken in Ehren halten.",
+            },
+            {
+              name: "Familie Müller",
+              date: "7. Februar 2022",
+              message:
+                "Unsere tiefste Anteilnahme an die Familie. Anna war eine außergewöhnliche Frau, deren Freundlichkeit und Weisheit uns immer in Erinnerung bleiben wird.",
+            },
+            {
+              name: "Ihre ehemaligen Kolleginnen und Kollegen",
+              date: "6. Februar 2022",
+              message:
+                "Wir trauern um eine herausragende Juristin, Mentorin und Freundin. Anna hat uns alle inspiriert und wird immer ein Teil unserer Kanzlei bleiben.",
+            },
+          ],
+        },
+      };
+
+      // Show memorial detail page
+      function showMemorial(id) {
+        const memorial = memorials[id];
+        if (!memorial) return;
+
+        // Set memorial details
+        document.getElementById("memorial-portrait-img").src =
+          memorial.portrait;
+        document.getElementById("memorial-portrait-img").alt = memorial.name;
+        document.getElementById("memorial-name").textContent = memorial.name;
+        document.getElementById("memorial-dates").textContent = memorial.dates;
+        document.getElementById("memorial-bio").textContent = memorial.bio;
+
+        // Load memories
+        const memoryList = document.getElementById("memory-list");
+        memoryList.innerHTML = "";
+        memorial.memories.forEach((memory) => {
+          const memoryEl = document.createElement("div");
+          memoryEl.className = "memory";
+
+          let imagesHtml = "";
+          if (memory.images && memory.images.length > 0) {
+            imagesHtml = '<div class="memory-images">';
+            memory.images.forEach((img) => {
+              imagesHtml += `<img src="${img}" alt="" onclick="openModal('${img}')">`;
+            });
+            imagesHtml += "</div>";
+          }
+
+          memoryEl.innerHTML = `
+                    <div class="memory-author">
+                        <img src="${memory.author.image}" alt="${memory.author.name}">
+                        <div>
+                            <h4>${memory.author.name}</h4>
+                            <p>${memory.date}</p>
+                        </div>
+                    </div>
+                    <h3>${memory.title}</h3>
+                    <p>${memory.content}</p>
+                    ${imagesHtml}
+                `;
+
+          memoryList.appendChild(memoryEl);
+        });
+
+        // Load photos
+        const photoGallery = document.getElementById("photo-gallery");
+        photoGallery.innerHTML = "";
+        memorial.photos.forEach((photo) => {
+          const photoEl = document.createElement("div");
+          photoEl.className = "gallery-item";
+          photoEl.innerHTML = `
+                    <img src="${photo.url}" alt="${photo.caption}" onclick="openModal('${photo.url}')">
+                    <p>${photo.caption}</p>
+                `;
+          photoGallery.appendChild(photoEl);
+        });
+
+        // Load timeline
+        const timeline = document.getElementById("timeline");
+        timeline.innerHTML = "";
+        memorial.timeline.forEach((item) => {
+          const timelineItem = document.createElement("div");
+          timelineItem.className = "timeline-item";
+          timelineItem.innerHTML = `
+                    <div class="timeline-content">
+                        <div class="timeline-date">${item.date}</div>
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                    </div>
+                `;
+          timeline.appendChild(timelineItem);
+        });
+
+        // Load guestbook
+        const guestbookEntries = document.getElementById("guestbook-entries");
+        guestbookEntries.innerHTML = "";
+        memorial.guestbook.forEach((entry) => {
+          const entryEl = document.createElement("div");
+          entryEl.className = "memory";
+          entryEl.innerHTML = `
+                    <div class="memory-author">
+                        <div>
+                            <h4>${entry.name}</h4>
+                            <p>${entry.date}</p>
+                        </div>
+                    </div>
+                    <p>${entry.message}</p>
+                `;
+          guestbookEntries.appendChild(entryEl);
+        });
+
+        // Show memorial detail page
+        document.getElementById("main-page").style.display = "none";
+        document.getElementById("memorial-detail").style.display = "block";
+
+        // Set active tab
+        showTab("memories");
+
+        // Scroll to top
+        window.scrollTo(0, 0);
+      }
+
+      // Hide memorial detail page
+      function hideMemorial() {
+        document.getElementById("main-page").style.display = "block";
+        document.getElementById("memorial-detail").style.display = "none";
+      }
+
+      // Show tab content
+      function showTab(tabId) {
+        // Hide all tab contents
+        const tabContents = document.querySelectorAll(".tab-content");
+        tabContents.forEach((content) => {
+          content.classList.remove("active");
+        });
+
+        // Remove active class from all tabs
+        const tabs = document.querySelectorAll(".tab");
+        tabs.forEach((tab) => {
+          tab.classList.remove("active");
+        });
+
+        // Show selected tab content
+        document.getElementById(`${tabId}-tab`).classList.add("active");
+
+        // Add active class to selected tab
+        const selectedTab = document.querySelector(
+          `.tab[onclick="showTab('${tabId}')"]`
+        );
+        if (selectedTab) {
+          selectedTab.classList.add("active");
+        }
+      }
+
+      // Open image modal
+      function openModal(imgSrc) {
+        const modal = document.getElementById("image-modal");
+        const modalImg = document.getElementById("modal-image");
+
+        modal.style.display = "flex";
+        modalImg.src = imgSrc;
+      }
+
+      // Close image modal
+      function closeModal() {
+        document.getElementById("image-modal").style.display = "none";
+      }
+
+      // Close modal when clicking outside the image
+      window.onclick = function (event) {
+        const modal = document.getElementById("image-modal");
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      };
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", function () {
+        // Hide memorial detail page initially
+        document.getElementById("memorial-detail").style.display = "none";
+      });
+    </script>
+  </body>
+</html>
